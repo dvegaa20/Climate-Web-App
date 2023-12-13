@@ -1,8 +1,62 @@
+'use client'
 import Image from 'next/image'
+import React, { useEffect } from 'react';
 
-export default function Home() {
+const MyPage: React.FC = () => {
+  useEffect(() => {
+    // Agregar la etiqueta script para tu archivo JavaScript
+    const scriptElement = document.createElement('script');
+    scriptElement.src = 'index.js';
+    document.head.appendChild(scriptElement);
+
+    return () => {
+      document.head.removeChild(scriptElement);
+    };
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div id='container' className="">
+      <div id='search-box' className="">
+        <i id='fa-solid' className=''>Ubi</i>
+        <input id='search-box input' type="text" placeholder='Enter your location'/>
+        <button id='search-box button' className=''>Search</button>
+      </div>
+
+      <div id='not-found' className="">
+        <img src="404.png" alt="" />
+        <p>Invalid Location</p>
+      </div>
+      
+      <div id='weather-box' className="">
+        <img src=""/>
+        <p id='temperature' className=""></p>
+        <p id='description' className=""></p>
+      </div>
+
+      <div id='weather-details' className="">
+        <div id='humidity' className="">
+          <i id='fa-solid' className=""></i>
+          <div id='text' className="">
+            <span></span>
+            <p>Humidity</p>
+          </div>
+        </div>
+        <div id='wind' className="">
+          <i id='fa-solid' className=""></i>
+          <div id='text' className="">
+            <span></span>
+            <p>Wind Speed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MyPage;
+
+
+{/* <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -108,6 +162,4 @@ export default function Home() {
           </p>
         </a>
       </div>
-    </main>
-  )
-}
+    </main> */}
